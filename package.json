@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3"
+  },
+  "scripts": {
+    "pre-commit": "cd client && npm run pre-commit",
+    "prepare": "husky install",
+    "install:client": "cd client && npm install "
+  }
+}
