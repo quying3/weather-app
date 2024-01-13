@@ -1,6 +1,5 @@
 package com.weather.server;
 
-
 public class User {
     private String login;
     private Integer id;
