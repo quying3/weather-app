@@ -14,15 +14,15 @@ test('test', () => {
   expect(true).toBe(true);
 });
 
-// const add = (a, b) => a + b;
-// const cases = [
-//   [2, 3, 5],
-//   [-2, -2, -4],
-//   [2, -2, 0]
-// ];
-// describe('learning describe', () => {
-//   test.each(cases)('expect %p + %p = %p', (a, b, expectedRes) => {
-//     const result = add(a, b);
-//     expect(result).toBe(expectedRes);
-//   });
-// });
+const add = (a, b) => a + b;
+const cases = [
+  [2, 3, 5],
+  [-2, -2, -4],
+  [2, -2, 0]
+];
+describe('learning describe', () => {
+  test.each(cases)('expect %p + %p = %p', (a, b, expectedRes) => {
+    const result = add(a, b);
+    expect(result).toBe(expectedRes);
+  });
+});
