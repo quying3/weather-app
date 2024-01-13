@@ -1,4 +1,6 @@
-const Test = () => {
+import React from "react";
+
+const Hello = () => {
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -9,4 +11,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Hello;
