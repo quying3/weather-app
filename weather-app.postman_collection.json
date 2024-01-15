@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "d07ef2e2-492e-46e6-99d5-0399cde10789",
+		"name": "weather-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26899494"
+	},
+	"item": [
+		{
+			"name": "getGeo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/location?city=Santa Clara",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"location"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Santa Clara"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getWeather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/weather/location?city=Santa Clara",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"weather",
+						"location"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Santa Clara"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
