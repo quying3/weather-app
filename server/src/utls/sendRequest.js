@@ -1,8 +1,24 @@
-const sendRequest = async ({ ...req }) => {
+// const sendRequest = async ({ ...req }) => {
+//   try {
+//     const response = await fetch(req.url);
+//     if (!response.ok) {
+//       throw new Error(`Status code: ${response.status} ${response.statusText}`);
+//     }
+//     const data = await response.json();
+//     return data;
+//   } catch (err) {
+//     console.log(err.message);
+//     return undefined;
+//   }
+// };
+
+const sendRequest = async (req) => {
   try {
     const response = await fetch(req.url);
     if (!response.ok) {
-      throw new Error(`Status code: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Status code: ${response.status}, Message: ${response.statusText}`
+      );
     }
     const data = await response.json();
     return data;
