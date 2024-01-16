@@ -7,55 +7,126 @@
 	},
 	"item": [
 		{
-			"name": "getGeo",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/location?city=Santa Clara",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"location"
-					],
-					"query": [
-						{
-							"key": "city",
-							"value": "Santa Clara"
+			"name": "weather",
+			"item": [
+				{
+					"name": "getWeatherByCity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/weather/city?name=Santa Clara",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"weather",
+								"city"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Santa Clara"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "getWeatherByCoord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/weather/coord?lat=37.3541132&lon=-121.955174",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"weather",
+								"coord"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "37.3541132"
+								},
+								{
+									"key": "lon",
+									"value": "-121.955174"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "getWeather",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/weather/location?city=Santa Clara",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"weather",
-						"location"
-					],
-					"query": [
-						{
-							"key": "city",
-							"value": "Santa Clara"
+			"name": "location",
+			"item": [
+				{
+					"name": "getCoordByCity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/location/city?name=Santa Clara",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"location",
+								"city"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Santa Clara"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "getCityByCoord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/location/coord?lat=37.3541132&lon=-121.955174",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"location",
+								"coord"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "37.3541132"
+								},
+								{
+									"key": "lon",
+									"value": "-121.955174"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
