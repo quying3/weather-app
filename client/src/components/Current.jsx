@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getLocation } from '../utils/getCurrentLocation';
+import { getLocation } from '@/utils/getCurrentLocation';
 import {
   getCurrentWeather,
   getCurrentLocation
-} from '../services/getCurrentWeather';
-import { getDate } from '../utils/getCurrentDate';
+} from '@/services/getCurrentWeather';
+import { getDate } from '@/utils/getCurrentDate';
+import '@/styles/Current.css';
 
 const Current = () => {
   const [geoLocation, setGeoLocation] = useState(null);
@@ -17,7 +18,6 @@ const Current = () => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     setGeoLocation([latitude, longitude]);
-    // console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
     const locationData = await getCurrentLocation({
       lat: latitude,
       lon: longitude
@@ -42,19 +42,23 @@ const Current = () => {
   }, []);
 
   return (
-    <div>
-      {!geoLocation ? <p>{err}</p> : null}
-      {!location || !weather ? (
+    <div className="current-weather-container">
+      <h2 className="current-weather-header">CURRENT WEATHER</h2>
+      {!geoLocation && <p>{err}</p>}
+      {!location && !weather ? (
         <p>Loading weather data...</p>
       ) : (
-        <div>
-          <h2>CURRENT WEATHER</h2>
-          <p>
-            Location: {location.name}, {location.state}
-          </p>
-          <p>Date: {date}</p>
-          <p>temprature: {weather.temp}°F</p>
-          <p>weather: {weather.weather}</p>
+        <div className="weather-card">
+          <div>
+            <p>
+              Location: {location.name}, {location.state}
+            </p>
+            <p>Date: {date}</p>
+          </div>
+          <div>
+            <p>temprature: {weather.temp}°F</p>
+            <p>weather: {weather.weather}</p>
+          </div>
           <img
             src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
           ></img>

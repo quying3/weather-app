@@ -1,6 +1,6 @@
 import express from "express";
-import { getGeoLocation } from "../services/getGeoLocation.js";
-import getCurrentWeather from "../services/getCurrentWeather.js";
+import { getGeoLocation } from "#services/getGeoLocation.js";
+import getCurrentWeather from "#services/getCurrentWeather.js";
 const router = express.Router();
 
 // ex: weather/coord?lat=37.3541132&lon=-121.955174

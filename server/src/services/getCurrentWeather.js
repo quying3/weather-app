@@ -1,5 +1,5 @@
-import { API_KEY } from "../config/index.js";
-import sendRequest from "../utls/sendRequest.js";
+import { API_KEY } from "#config/index.js";
+import sendRequest from "#utls/sendRequest.js";
 
 const getCurrentWeather = async (location) => {
   const { lat, lon } = location;

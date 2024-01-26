@@ -24,7 +24,7 @@ const sendRequest = async (req) => {
     return data;
   } catch (err) {
     console.log(err.message);
-    return undefined;
+    return [];
   }
 };
 

@@ -1,5 +1,5 @@
-import sendRequest from "../utls/sendRequest.js";
-import { API_KEY } from "../config/index.js";
+import sendRequest from "#utls/sendRequest.js";
+import { API_KEY } from "#config/index.js";
 
 const getGeoLocation = async (city) => {
   const limit = 5;

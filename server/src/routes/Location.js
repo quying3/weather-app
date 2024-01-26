@@ -1,5 +1,5 @@
 import express from "express";
-import { getGeoLocation, getLocationName } from "../services/getGeoLocation.js";
+import { getGeoLocation, getLocationName } from "#services/getGeoLocation.js";
 const router = express.Router();
 
 // ex: /location/city?name=Santa Clara
