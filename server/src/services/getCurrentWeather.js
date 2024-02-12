@@ -5,6 +5,7 @@ const getCurrentWeather = async (location) => {
   const { lat, lon } = location;
   // console.log(lat, lon);
   const part = "minutely,hourly,daily";
+  // const part = "minutely,hourly";
   const weather = await sendRequest({
     url: `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=${part}&appid=${API_KEY}`,
   });
