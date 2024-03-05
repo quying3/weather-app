@@ -16,27 +16,14 @@ const Current = () => {
   const [temp, setTemp] = useState(true);
 
   const handleSuccess = async position => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    console.log('called on Success');
+    const { latitude, longitude } = position.coords;
     if (
       !geoLocation ||
-      geoLocation[0] !== latitude ||
-      geoLocation[1] !== longitude
+      geoLocation.latitude !== latitude ||
+      geoLocation.longitude !== longitude
     ) {
-      setGeoLocation([latitude, longitude]);
-      const locationData = await getCurrentLocation({
-        lat: latitude,
-        lon: longitude
-      });
-      const weatherData = await getCurrentWeather({
-        lat: latitude,
-        lon: longitude
-      });
-      setWeather(weatherData);
-      setLocation(locationData);
-      console.log('called on Success');
-      console.log('weatherData', weatherData);
-      console.log('locationData', locationData);
+      setGeoLocation({ latitude: latitude, longitude: longitude });
     }
   };
 
@@ -46,10 +33,27 @@ const Current = () => {
 
   useEffect(() => {
     setDate(getDate());
+    getLocation(handleSuccess, handleError);
   }, []);
 
   useEffect(() => {
-    getLocation(handleSuccess, handleError);
+    if (geoLocation) {
+      (async () => {
+        const { latitude, longitude } = geoLocation;
+        const locationData = await getCurrentLocation({
+          lat: latitude,
+          lon: longitude
+        });
+        const weatherData = await getCurrentWeather({
+          lat: latitude,
+          lon: longitude
+        });
+        setWeather(weatherData);
+        setLocation(locationData);
+        console.log('weatherData', weatherData);
+        console.log('locationData', locationData);
+      })();
+    }
   }, [geoLocation]);
 
   const celcius = useMemo(() => {
