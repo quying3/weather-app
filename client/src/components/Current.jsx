@@ -1,74 +1,40 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { getLocation } from '@/utils/getCurrentLocation';
-import {
-  getCurrentWeather,
-  getCurrentLocation
-} from '@/services/getCurrentWeather';
-import { getDate } from '@/utils/getCurrentDate';
+import React, { useState, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+
 import '@/styles/Current.css';
 
 const Current = () => {
-  const [geoLocation, setGeoLocation] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [err, setErr] = useState(null);
-  const [weather, setWeather] = useState(null);
-  const [date, setDate] = useState(null);
+  const { date } = useSelector(state => state.app);
   const [temp, setTemp] = useState(true);
+  const {
+    weather,
+    status: weatherStatus,
+    error: weatherError
+  } = useSelector(state => state.weather);
 
-  const handleSuccess = async position => {
-    console.log('called on Success');
-    const { latitude, longitude } = position.coords;
-    if (
-      !geoLocation ||
-      geoLocation.latitude !== latitude ||
-      geoLocation.longitude !== longitude
-    ) {
-      setGeoLocation({ latitude: latitude, longitude: longitude });
-    }
-  };
-
-  const handleError = () => {
-    setErr('Unable to retrieve your location');
-  };
-
-  useEffect(() => {
-    setDate(getDate());
-    getLocation(handleSuccess, handleError);
-  }, []);
-
-  useEffect(() => {
-    if (geoLocation) {
-      (async () => {
-        const { latitude, longitude } = geoLocation;
-        const locationData = await getCurrentLocation({
-          lat: latitude,
-          lon: longitude
-        });
-        const weatherData = await getCurrentWeather({
-          lat: latitude,
-          lon: longitude
-        });
-        setWeather(weatherData);
-        setLocation(locationData);
-        console.log('weatherData', weatherData);
-        console.log('locationData', locationData);
-      })();
-    }
-  }, [geoLocation]);
+  const {
+    location,
+    status: locationStatus,
+    error: locationError
+  } = useSelector(state => state.location);
 
   const celcius = useMemo(() => {
-    if (!weather) return;
-    return ((weather.temp - 32) * 5) / 9;
+    if (weather) {
+      let c = ((weather.temp - 32) * 5) / 9;
+      return c.toFixed(2);
+    }
   }, [weather]);
 
   return (
     <div className="current-weather-container">
       <h2 className="current-weather-header">CURRENT WEATHER</h2>
-      {!geoLocation ? (
-        <p>{err}</p>
-      ) : !location && !weather ? (
+      {(weatherStatus !== 'succeeded' || locationStatus !== 'succeeded') && (
         <p>Loading weather data...</p>
-      ) : (
+      )}
+      {(weatherError || locationError) && (
+        <p>{weatherError || locationError}</p>
+      )}
+      {weatherStatus === 'succeeded' && locationStatus === 'succeeded' && (
         <div className="weather-card">
           <div>
             <p>

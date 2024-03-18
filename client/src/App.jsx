@@ -1,11 +1,6 @@
-import Current from '@/components/current';
+import Page from '@/Page';
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Current />
-    </>
-  );
+  return <Page />;
 }
 
 export default App;
