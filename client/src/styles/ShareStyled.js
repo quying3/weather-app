@@ -1,4 +1,6 @@
-.current-weather-container {
+import styled from 'styled-components';
+
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -8,20 +10,27 @@
   align-items: center;
   margin: 10px 10px;
   text-align: center;
-}
+`;
 
-.current-weather-container p {
+const ContainP = styled.p`
   margin: auto;
-}
+`;
 
-.current-weather-header {
+const ContainHeader = styled.h2`
   justify-self: flex-start;
-}
+`;
 
-.weather-card {
+const Card = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 200px;
   width: 600px;
-}
+  margin: auto;
+`;
+
+const CardSub = styled.span`
+  display: flex;
+  align-items: center;
+`;
+export { Container, ContainP, ContainHeader, Card, CardSub };

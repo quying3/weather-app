@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import '@/styles/Air.css';
+import styles from '@/styles/Air.module.css';
 import {
   WiStrongWind,
   WiHumidity,
@@ -10,42 +10,42 @@ import {
 
 const Air = () => {
   const {
-    weather,
+    air,
     status: weatherStatus,
     error: weatherError
   } = useSelector(state => state.weather);
   return (
-    <div className="current-air-container">
-      <h2 className="current-air-header">Air Conditions</h2>
+    <div className={styles.container}>
+      <h2 className={styles.header}>Air Conditions</h2>
       {weatherStatus !== 'succeeded' && <p>Loading weather data...</p>}
       {weatherError && <p>{weatherError}</p>}
       {weatherStatus === 'succeeded' && (
-        <div className="air-card">
+        <div className={styles.card}>
           <div>
-            <span className="air-sub">
+            <span className={styles.sub}>
               Real Feel
               <WiThermometer />
             </span>
-            <p>{weather.feelsLike}</p>
+            <p>{air.feelsLike}</p>
           </div>
           <div>
-            <span className="air-sub">
+            <span className={styles.sub}>
               Wind
               <WiStrongWind />
             </span>
-            <p>{weather.windSpeed}</p>
+            <p>{air.windSpeed}</p>
           </div>
           <div>
-            <span className="air-sub">
+            <span className={styles.sub}>
               Coulds <WiCloud />
             </span>
-            <p>{weather.clouds}%</p>
+            <p>{air.clouds}%</p>
           </div>
           <div>
-            <span className="air-sub">
+            <span className={styles.sub}>
               Humidity <WiHumidity />
             </span>
-            <p>{weather.humidity}%</p>
+            <p>{air.humidity}%</p>
           </div>
         </div>
       )}

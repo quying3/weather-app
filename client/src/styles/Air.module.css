@@ -1,4 +1,4 @@
-.current-air-container {
+.container {
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -10,15 +10,15 @@
   text-align: center;
 }
 
-.current-air-container p {
+.container p {
   margin: auto;
 }
 
-.current-air-header {
+.header {
   justify-self: flex-start;
 }
 
-.air-card {
+.card {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -27,7 +27,7 @@
   margin: auto;
 }
 
-.air-sub {
+.sub {
   display: flex;
   align-items: center;
 }

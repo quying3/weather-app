@@ -1,6 +1,7 @@
 import React from 'react';
 import Current from '@/components/current';
-import Air from './components/Air';
+import Air from '@/components/Air';
+import Hourly from '@/components/Hourly';
 import { fetchGeoLocation, setDate } from '@/features/app/appSlice';
 import { fetchLocationByGeo } from '@/features/location/locationSlice';
 import { fetchWeatherByGeo } from '@/features/weather/weatherSlice';
@@ -35,6 +36,7 @@ const page = () => {
     <div>
       <Current />
       <Air />
+      <Hourly />
     </div>
   );
 };

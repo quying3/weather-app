@@ -9,12 +9,14 @@ const getCurrentWeather = async (location) => {
   const weather = await sendRequest({
     url: `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=${part}&appid=${API_KEY}`,
   });
-  const convertHour = weather.hourly.map((el) => {
-    const myUnitTimeStamp = el.dt;
-    const myDate = new Date(myUnitTimeStamp * 1000);
-    return { ...el, myDate: myDate };
-  });
-  return { ...weather, hourly: convertHour };
+  // console.log(weather);
+  const hourly = weather.hourly.map((el) => ({
+    dt: el.dt,
+    temp: el.temp,
+    icon: el.weather[0].icon,
+  }));
+  // console.log(hourly);
+  return { ...weather, hourly: [hourly[1], hourly[4], hourly[7]] };
 };
 
 export default getCurrentWeather;

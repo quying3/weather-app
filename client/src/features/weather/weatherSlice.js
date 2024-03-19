@@ -11,7 +11,9 @@ export const fetchWeatherByGeo = createAsyncThunk(
 );
 
 const initialState = {
-  weather: null,
+  current: null,
+  air: null,
+  hourly: null,
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null
 };
@@ -27,7 +29,10 @@ const weartherSlice = createSlice({
       })
       .addCase(fetchWeatherByGeo.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.weather = action.payload.weatherData;
+        const { hourly, air, current } = action.payload.weatherData;
+        state.hourly = hourly;
+        state.air = air;
+        state.current = current;
         state.error = null;
       })
       .addCase(fetchWeatherByGeo.rejected, (state, action) => {
